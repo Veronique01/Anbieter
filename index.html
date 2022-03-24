@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Unbenanntes Dokument</title>
+</head>
+<script>
+	
+	function fTelefon() {
+		
+		var vAnbieterA;
+		var vAnbieterB;
+		var vKostenMA;
+		var vKostenMB;
+		var vEinheit=0;
+		var vGesamtkostenA;
+		var vGesamtkostenB;
+		var vAngebot;
+		var vAusgabe;
+	
+		vAnbieterA = document.getElementById("idAnbieterA").value;
+		vKostenMA = document.getElementById("idKostenMA").value;
+		vAnbieterB = document.getElementById("idAnbieterB").value;
+		vKostenMB = document.getElementById("idKostenMB").value;
+		
+		vAusgabe="";
+		vAusgabe=vAusgabe + "<table border=1>";
+		vAusgabe=vAusgabe + "<tr><th>Telefoneinheiten</th><th>Gesamtkosten A</th><th>Gesamtkosten B</th><th>Besseres Angebot ?</th></tr>";
+		
+		while (vEinheit<=200) {
+			
+		vGesamtkostenA=vEinheit*vKostenMA+vAnbieterA
+	    vGesamtkostenB=vEinhei*vKostenMB+vAnbieterB
+		
+		if (vEinheit==100){
+			vAngebot="Kritische Menge erreicht!";
+			vAusgabe=vAusgabe + "<tr style=background-color:green color:white><td>" + vEinheit + "</td><td>" + vGesamtkostenA + "€" + "</td><td>" + vGesamtkostenB + "€" + "</td><td>" + vAngebot + "</td></tr>";
+
+	
+
+}
+			
+			else if(vEinheit<100) {
+				
+				vAngebot="Anbieter B ist günstiger!";
+			vAusgabe=vAusgabe + "<tr><td>" + vEinheit + "</td><td>" + vGesamtkostenA + "€" +  "</td><td>" + vGesamtkostenB + "€" + "</td><td>" + vAngebot + "</td></tr>";
+			}
+
+			else {
+				
+				vAngebot="Anbieter A ist günstiger!";
+			vAusgabe=vAusgabe + "<tr><td>" + vEinheit + "</td><td>" + vGesamtkostenA + "€" + "</td><td>" + vGesamtkostenB + "€" + "</td><td>" + vAngebot + "</td></tr>";
+			}
+}
+		
+		vAusgabe=vAusgabe + "</table>";
+		
+		document.getElementById("idAusgabe").innerHTML = vAusgabe;
+}
+	
+
+	</script>
+<body>
+	<h1>Tefonanbieter</h1>
+	
+	Grundgebühr Anbieter A: <input id="idAnbieterA" type="text" value="10.00"> €<br></br>
+	Kosten pro tel. Minute: <input id="idKostenMA" type="text" value="0.05"> €<br></br>
+    Grundgebühr Anbieter B: <input id="idAnbieterB" type="text" value="5.00"> €<br></br>
+    Kosten pro tel. Minute: <input id="idKostenMB" type="text" value="0.10"> €<br></br>
+    <button onClick="fTelefon();">Kalkulieren!</button>
+	<div id="idAusgabe"></div>
+</body>
+</html>
